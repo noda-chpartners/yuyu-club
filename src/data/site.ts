@@ -20,7 +20,7 @@ export const site = {
   ],
   instagram: {
     label: '@yuyukurabu',
-    href: '#',
+    href: 'https://www.instagram.com/yuyukurabu',
   },
 } as const;
 

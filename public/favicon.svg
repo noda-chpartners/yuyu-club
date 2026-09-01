@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="遊結倶楽部">
+  <rect width="64" height="64" rx="14" fill="#182f44"/>
+  <path d="M12 16h40v7H12zm0 14h40v7H12zm0 14h40v7H12z" fill="#e4aa2b"/>
+  <path d="M18 10h7v44h-7zm21 0h7v44h-7z" fill="#f7f1e6"/>
+  <path d="M18 23h7v7h-7zm21 0h7v7h-7zM18 44h7v7h-7zm21 0h7v7h-7z" fill="#9c3157"/>
+</svg>

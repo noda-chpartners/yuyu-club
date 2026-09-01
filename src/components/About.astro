@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import ribbonBaskets from '@/assets/images/ribbon-baskets.jpg';
+import geometricBag from '@/assets/images/geometric-bag.jpg';
+import SectionHeading from '@/components/SectionHeading.astro';
+---
+
+<section class="about section" id="about" aria-labelledby="about-heading">
+  <div class="about__texture" aria-hidden="true"></div>
+  <div class="about__inner container">
+    <div class="about__visual" data-reveal>
+      <figure class="about__figure about__figure--large" data-parallax>
+        <Image
+          class="about__image about__image--large"
+          src={ribbonBaskets}
+          alt="ピンク、紫、緑の紙バンドで編まれたリボン付きバスケット"
+          widths={[480, 720, 960]}
+          sizes="(max-width: 760px) 82vw, 45vw"
+          format="webp"
+        />
+      </figure>
+      <figure class="about__figure about__figure--small">
+        <Image
+          class="about__image about__image--small"
+          src={geometricBag}
+          alt="幾何学模様に編まれたクラフトバンドのバッグ"
+          widths={[320, 480, 640]}
+          sizes="(max-width: 760px) 46vw, 24vw"
+          format="webp"
+        />
+      </figure>
+      <span class="about__stamp" aria-hidden="true">YUYU<br />CRAFT</span>
+    </div>
+
+    <div class="about__content" data-reveal>
+      <div id="about-heading">
+        <SectionHeading eyebrow="ABOUT US" title={['手を動かして、', 'つくる時間。']} />
+      </div>
+      <div class="about__body">
+        <p class="about__paragraph">
+          遊結倶楽部は、茨城県鹿嶋市にあるクラフトバンド教室と販売のお店です。
+        </p>
+        <p class="about__paragraph">
+          クラフトバンド・紙バンドをはじめ、手芸用品、雑貨、猫雑貨を取り扱っています。
+        </p>
+      </div>
+      <div class="about__note">
+        <span class="about__note-mark" aria-hidden="true"></span>
+        <p class="about__note-text">クラフトバンド教室<br />生徒募集中</p>
+      </div>
+    </div>
+  </div>
+</section>

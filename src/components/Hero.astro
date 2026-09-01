@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import materialsShelf from '@/assets/images/materials-shelf.jpg';
+import pairedBags from '@/assets/images/paired-bags.jpg';
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero__weave hero__weave--top" aria-hidden="true"></div>
+  <div class="hero__visual" aria-hidden="true">
+    <figure class="hero__figure hero__figure--main" data-hero-image>
+      <Image
+        class="hero__image hero__image--main"
+        src={materialsShelf}
+        alt=""
+        widths={[640, 960, 1280]}
+        sizes="(max-width: 760px) 100vw, 58vw"
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </figure>
+    <figure class="hero__figure hero__figure--sub" data-hero-image>
+      <Image
+        class="hero__image hero__image--sub"
+        src={pairedBags}
+        alt=""
+        widths={[400, 640, 800]}
+        sizes="(max-width: 760px) 52vw, 34vw"
+        format="webp"
+        loading="eager"
+      />
+    </figure>
+    <div class="hero__color-block" data-hero-image></div>
+  </div>
+
+  <div class="hero__content container">
+    <div class="hero__copy">
+      <p class="hero__eyebrow" data-hero-copy>CRAFT BAND STUDIO &amp; SHOP</p>
+      <h1 class="hero__title" id="hero-title" data-hero-copy>
+        <span class="hero__title-line">編む時間が、</span>
+        <span class="hero__title-line hero__title-line--accent">人と人を結ぶ。</span>
+      </h1>
+      <p class="hero__lead" data-hero-copy>
+        クラフトバンド教室と、<br class="hero__lead-break" />紙バンド・手芸用品・雑貨のお店。
+      </p>
+      <a class="hero__scroll focusable" href="#about" data-hero-copy>
+        <span class="hero__scroll-label">SCROLL</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <p class="hero__vertical-copy" aria-hidden="true">YUYU CLUB — KASHIMA, IBARAKI</p>
+</section>

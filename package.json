@@ -1,0 +1,21 @@
+{
+  "name": "yuyu-club-landing-page",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "gsap": "latest",
+    "lenis": "latest",
+    "sass": "latest",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,19 @@
+---
+interface Props {
+  inverse?: boolean;
+}
+
+const { inverse = false } = Astro.props;
+---
+
+<span class:list={['brand-mark', { 'brand-mark--inverse': inverse }]} aria-label="遊結倶楽部">
+  <span class="brand-mark__weave" aria-hidden="true">
+    <span class="brand-mark__band brand-mark__band--one"></span>
+    <span class="brand-mark__band brand-mark__band--two"></span>
+    <span class="brand-mark__band brand-mark__band--three"></span>
+  </span>
+  <span class="brand-mark__copy">
+    <span class="brand-mark__name">遊結倶楽部</span>
+    <span class="brand-mark__reading">ゆうゆうくらぶ</span>
+  </span>
+</span>

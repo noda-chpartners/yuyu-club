@@ -1,0 +1,30 @@
+---
+import { site } from '@/data/site';
+---
+
+<section class="contact section" aria-labelledby="contact-heading">
+  <div class="contact__inner container" data-reveal>
+    <div class="contact__copy">
+      <p class="contact__eyebrow">CONTACT</p>
+      <h2 class="contact__title" id="contact-heading">
+        <span class="contact__title-line">教室についての</span>
+        <span class="contact__title-line">お問い合わせ</span>
+      </h2>
+    </div>
+    <div class="contact__links">
+      <a class="contact__phone focusable" href={site.phoneHref}>
+        <span class="contact__phone-label">お電話はこちら</span>
+        <span class="contact__phone-number">{site.phoneDisplay}</span>
+        <span class="contact__phone-note">営業時間 10:00〜17:30</span>
+      </a>
+      <a class="contact__instagram focusable" href={site.instagram.href}>
+        <span class="contact__instagram-icon" aria-hidden="true"></span>
+        <span class="contact__instagram-copy">
+          <span class="contact__instagram-label">Instagram</span>
+          <span class="contact__instagram-account">{site.instagram.label}</span>
+        </span>
+        <span class="contact__instagram-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>

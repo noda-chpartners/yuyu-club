@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import craftCollection from '@/assets/images/craft-collection.jpg';
+import catBaskets from '@/assets/images/cat-baskets.jpg';
+import materialsShelf from '@/assets/images/materials-shelf.jpg';
+import SectionHeading from '@/components/SectionHeading.astro';
+---
+
+<section class="services section" id="service" aria-labelledby="service-heading">
+  <div class="services__inner container">
+    <div class="services__heading" id="service-heading" data-reveal>
+      <SectionHeading
+        eyebrow="LESSON & SHOP"
+        title="教室と販売"
+        description="クラフトバンドを楽しむ教室と、材料・手芸用品・雑貨の販売を行っています。"
+        theme="dark"
+      />
+    </div>
+
+    <div class="services__list">
+      <article class="service-card service-card--lesson" data-reveal>
+        <div class="service-card__number">01</div>
+        <div class="service-card__content">
+          <p class="service-card__eyebrow">CRAFT BAND LESSON</p>
+          <h3 class="service-card__title">
+            <span class="service-card__title-line">クラフトバンド</span>
+            <span class="service-card__title-line">教室</span>
+          </h3>
+          <p class="service-card__text">午前・午後の3つの時間帯で教室を開いています。</p>
+          <a class="service-card__link focusable" href="#information">
+            <span class="service-card__link-label">教室時間を見る</span>
+            <span class="service-card__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <figure class="service-card__figure">
+          <Image
+            class="service-card__image"
+            src={craftCollection}
+            alt="クラフトバンドで作られたバッグや小物"
+            widths={[440, 660, 880]}
+            sizes="(max-width: 760px) 100vw, 42vw"
+            format="webp"
+          />
+        </figure>
+      </article>
+
+      <article class="service-card service-card--shop" data-reveal>
+        <div class="service-card__number">02</div>
+        <div class="service-card__content">
+          <p class="service-card__eyebrow">MATERIALS & GOODS</p>
+          <h3 class="service-card__title">
+            <span class="service-card__title-line">材料・手芸用品</span>
+            <span class="service-card__title-line">・雑貨販売</span>
+          </h3>
+          <p class="service-card__text">クラフトバンド、紙バンド、手芸用品、雑貨、猫雑貨を販売しています。</p>
+        </div>
+        <div class="service-card__visuals">
+          <figure class="service-card__figure service-card__figure--split">
+            <Image
+              class="service-card__image"
+              src={materialsShelf}
+              alt="色とりどりのクラフトバンドが並ぶ店内の棚"
+              widths={[360, 540, 720]}
+              sizes="(max-width: 760px) 52vw, 23vw"
+              format="webp"
+            />
+          </figure>
+          <figure class="service-card__figure service-card__figure--split">
+            <Image
+              class="service-card__image"
+              src={catBaskets}
+              alt="猫の顔をあしらったクラフトバンドのバスケット"
+              widths={[360, 540, 720]}
+              sizes="(max-width: 760px) 52vw, 23vw"
+              format="webp"
+            />
+          </figure>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

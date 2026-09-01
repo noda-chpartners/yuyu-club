@@ -1,0 +1,98 @@
+---
+import BrandMark from '@/components/BrandMark.astro';
+import { navigation, site } from '@/data/site';
+---
+
+<header class="header" data-header>
+  <div class="header__inner">
+    <a class="header__brand focusable" href="#top" aria-label="遊結倶楽部 トップへ">
+      <BrandMark />
+    </a>
+
+    <nav class="header__nav" aria-label="メインナビゲーション">
+      <ul class="header__nav-list">
+        {navigation.map((item) => (
+          <li class="header__nav-item">
+            <a class="header__nav-link focusable" href={item.href}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a class="header__phone focusable" href={site.phoneHref}>
+      <span class="header__phone-label">お電話</span>
+      <span class="header__phone-number">{site.phoneDisplay}</span>
+    </a>
+
+    <button
+      class="menu-button focusable"
+      type="button"
+      aria-label="メニューを開く"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      data-menu-button
+    >
+      <span class="menu-button__line"></span>
+      <span class="menu-button__line"></span>
+      <span class="menu-button__line"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
+    <div class="mobile-menu__pattern" aria-hidden="true"></div>
+    <div class="mobile-menu__inner">
+      <div class="mobile-menu__brand">
+        <BrandMark inverse />
+      </div>
+      <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
+        <ul class="mobile-menu__list">
+          {navigation.map((item, index) => (
+            <li class="mobile-menu__item">
+              <a class="mobile-menu__link focusable" href={item.href} data-menu-link>
+                <span class="mobile-menu__number">0{index + 1}</span>
+                <span class="mobile-menu__label">{item.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="mobile-menu__contact">
+        <a class="mobile-menu__phone focusable" href={site.phoneHref}>
+          <span class="mobile-menu__phone-label">電話でのお問い合わせ</span>
+          <span class="mobile-menu__phone-number">{site.phoneDisplay}</span>
+        </a>
+        <a class="mobile-menu__instagram focusable" href={site.instagram.href}>
+          Instagram&nbsp;&nbsp;{site.instagram.label}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+  const menuLinks = document.querySelectorAll<HTMLElement>('[data-menu-link]');
+
+  const setMenu = (open: boolean) => {
+    if (!menuButton || !menu) return;
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    menu.setAttribute('aria-hidden', String(!open));
+    document.documentElement.classList.toggle('menu-open', open);
+  };
+
+  menuButton?.addEventListener('click', () => {
+    setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+  });
+
+  menuLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMenu(false);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 980) setMenu(false);
+  });
+</script>

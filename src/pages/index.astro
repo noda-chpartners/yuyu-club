@@ -1,0 +1,28 @@
+---
+import '@/styles/page.scss';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import About from '@/components/About.astro';
+import Services from '@/components/Services.astro';
+import Gallery from '@/components/Gallery.astro';
+import Information from '@/components/Information.astro';
+import Contact from '@/components/Contact.astro';
+import Footer from '@/components/Footer.astro';
+
+const title = '遊結倶楽部（ゆうゆうくらぶ）｜茨城県鹿嶋市のクラフトバンド教室';
+const description = '茨城県鹿嶋市の遊結倶楽部。クラフトバンド教室、クラフトバンド・紙バンド、手芸用品、雑貨・猫雑貨の販売。';
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main class="site-main" id="main-content">
+    <Hero />
+    <About />
+    <Services />
+    <Gallery />
+    <Information />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import pairedBags from '@/assets/images/paired-bags.jpg';
+import wovenDrawers from '@/assets/images/woven-drawers.jpg';
+import horsePanel from '@/assets/images/horse-panel.jpg';
+import navyBag from '@/assets/images/navy-bag.jpg';
+import navyBasket from '@/assets/images/navy-basket.jpg';
+import ribbonBaskets from '@/assets/images/ribbon-baskets.jpg';
+import SectionHeading from '@/components/SectionHeading.astro';
+
+const galleryItems = [
+  { src: navyBag, alt: '紺色と多色の紙バンドで編まれたバッグ', className: 'gallery__item--tall' },
+  { src: pairedBags, alt: '茶色と紺色の紙バンドで編まれた2つのバッグ', className: 'gallery__item--wide' },
+  { src: horsePanel, alt: '走る馬のモチーフを編み込んだ壁飾り', className: 'gallery__item--square' },
+  { src: wovenDrawers, alt: '紙バンドで編まれた引き出し収納', className: 'gallery__item--tall' },
+  { src: ribbonBaskets, alt: 'リボンをあしらった3色の小物入れ', className: 'gallery__item--wide' },
+  { src: navyBasket, alt: '紺色と多色の紙バンドで編まれた縦長のバスケット', className: 'gallery__item--tall' },
+];
+---
+
+<section class="gallery section" id="gallery" aria-labelledby="gallery-heading">
+  <div class="gallery__inner container">
+    <div class="gallery__heading" id="gallery-heading" data-reveal>
+      <SectionHeading
+        eyebrow="CRAFT GALLERY"
+        title={['紙バンドから生まれる', 'かたち']}
+        description="バッグ、小物入れ、収納、壁飾り。色と編み方で、さまざまな表情が生まれます。"
+        align="center"
+      />
+    </div>
+    <div class="gallery__grid">
+      {galleryItems.map((item, index) => (
+        <figure class:list={['gallery__item', item.className]} data-reveal>
+          <Image
+            class="gallery__image"
+            src={item.src}
+            alt={item.alt}
+            widths={[380, 570, 760]}
+            sizes="(max-width: 760px) 88vw, 33vw"
+            format="webp"
+          />
+          <figcaption class="gallery__caption">
+            <span class="gallery__caption-number">0{index + 1}</span>
+            <span class="gallery__caption-label">YUYU CRAFT</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

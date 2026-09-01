@@ -1,0 +1,13 @@
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  output: 'static',
+  image: {
+    responsiveStyles: true,
+  },
+  vite: {
+    server: {
+      host: true,
+    },
+  },
+});

@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import craftCollection from '@/assets/images/craft-collection.jpg';
-import catBaskets from '@/assets/images/cat-baskets.jpg';
 import materialsShelf from '@/assets/images/materials-shelf.jpg';
 import SectionHeading from '@/components/SectionHeading.astro';
 ---
@@ -54,28 +53,16 @@ import SectionHeading from '@/components/SectionHeading.astro';
           </h3>
           <p class="service-card__text">クラフトバンド、紙バンド、手芸用品、雑貨、猫雑貨を販売しています。</p>
         </div>
-        <div class="service-card__visuals">
-          <figure class="service-card__figure service-card__figure--split">
-            <Image
-              class="service-card__image"
-              src={materialsShelf}
-              alt="色とりどりのクラフトバンドが並ぶ店内の棚"
-              widths={[360, 540, 720]}
-              sizes="(max-width: 760px) 52vw, 23vw"
-              format="webp"
-            />
-          </figure>
-          <figure class="service-card__figure service-card__figure--split">
-            <Image
-              class="service-card__image"
-              src={catBaskets}
-              alt="猫の顔をあしらったクラフトバンドのバスケット"
-              widths={[360, 540, 720]}
-              sizes="(max-width: 760px) 52vw, 23vw"
-              format="webp"
-            />
-          </figure>
-        </div>
+        <figure class="service-card__figure">
+          <Image
+            class="service-card__image"
+            src={materialsShelf}
+            alt="色とりどりのクラフトバンドが並ぶ店内の棚"
+            widths={[440, 660, 880]}
+            sizes="(max-width: 760px) 100vw, 42vw"
+            format="webp"
+          />
+        </figure>
       </article>
     </div>
   </div>

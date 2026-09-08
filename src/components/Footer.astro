@@ -5,26 +5,34 @@ import { navigation, site } from '@/data/site';
 
 <footer class="footer">
   <div class="footer__inner container">
-    <div class="footer__top">
-      <a class="footer__brand focusable" href="#top" aria-label="遊結倶楽部 トップへ">
-        <BrandMark inverse />
-      </a>
-      <nav class="footer__nav" aria-label="フッターナビゲーション">
-        <ul class="footer__nav-list">
-          {navigation.map((item) => (
-            <li class="footer__nav-item">
-              <a class="footer__nav-link focusable" href={item.href}>{item.label}</a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
-    <div class="footer__bottom">
-      <address class="footer__address">
-        <span class="footer__address-line">{site.address}</span>
-        <a class="footer__phone focusable" href={site.emailHref}>{site.emailDisplay}</a>
-      </address>
-      <p class="footer__copyright">© YUYU CLUB</p>
-    </div>
+    <a class="footer__brand focusable" href="#top" aria-label="遊結倶楽部 トップへ">
+      <BrandMark size="large" />
+    </a>
+    <p class="footer__tagline">{site.tagline}</p>
+
+    <nav class="footer__nav" aria-label="フッターナビゲーション">
+      <ul class="footer__list">
+        {navigation.map((item) => (
+          <li class="footer__item">
+            <a class="footer__link focusable" href={item.href}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <address class="footer__address">
+      <span>{site.address}</span>
+      <span class="footer__sep" aria-hidden="true">｜</span>
+      <a class="focusable" href={site.emailHref}>{site.emailDisplay}</a>
+      <span class="footer__sep" aria-hidden="true">｜</span>
+      <a class="focusable" href={site.phoneHref}>TEL {site.phoneDisplay}</a>
+    </address>
+
+    <p class="footer__copyright">© {site.name} / {site.english}</p>
   </div>
 </footer>
+
+<div class="fixed-cta" aria-label="お問い合わせ">
+  <a class="fixed-cta__button fixed-cta__button--mail focusable" href={site.emailHref}>メールで問い合わせ</a>
+  <a class="fixed-cta__button focusable" href={site.phoneHref}>電話をかける</a>
+</div>

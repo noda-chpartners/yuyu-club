@@ -1,69 +1,99 @@
 ---
-import { site } from '@/data/site';
 import SectionHeading from '@/components/SectionHeading.astro';
+import { site } from '@/data/site';
 ---
 
 <section class="information section" id="information" aria-labelledby="information-heading">
-  <div class="information__weave" aria-hidden="true"></div>
   <div class="information__inner container">
-    <div class="information__heading" id="information-heading" data-reveal>
-      <SectionHeading
-        eyebrow="INFORMATION"
-        title="営業・教室案内"
-        description="営業日と教室の時間をご確認ください。"
-      />
+    <div id="information-heading" data-reveal>
+      <SectionHeading english="INFORMATION" title="営業案内・アクセス" watermark="ACCESS" />
     </div>
 
     <div class="information__grid">
-      <div class="information__panel" data-reveal>
-        <h3 class="information__panel-title">営業案内</h3>
-        <dl class="information__list">
-          <div class="information__row">
-            <dt class="information__term">営業日</dt>
-            <dd class="information__description">{site.businessDays}</dd>
+      <div class="information__details" data-reveal>
+        <dl class="info-table">
+          <div class="info-table__row">
+            <dt class="info-table__term">店名</dt>
+            <dd class="info-table__value">
+              {site.name}<span class="info-table__reading">（{site.reading}）</span>
+            </dd>
           </div>
-          <div class="information__row">
-            <dt class="information__term">営業時間</dt>
-            <dd class="information__description information__description--numeric">{site.businessHours}</dd>
+          <div class="info-table__row">
+            <dt class="info-table__term">内容</dt>
+            <dd class="info-table__value">
+              <ul class="info-table__list">
+                {site.services.map((service) => <li>{service}</li>)}
+              </ul>
+            </dd>
+          </div>
+          <div class="info-table__row">
+            <dt class="info-table__term">営業日</dt>
+            <dd class="info-table__value">{site.businessDays}</dd>
+          </div>
+          <div class="info-table__row">
+            <dt class="info-table__term">営業時間</dt>
+            <dd class="info-table__value info-table__value--numeric">{site.businessHours}</dd>
+          </div>
+          <div class="info-table__row">
+            <dt class="info-table__term">教室時間</dt>
+            <dd class="info-table__value">
+              <ul class="info-table__slots">
+                {site.lessons.map((lesson) => (
+                  <li class="info-table__slot">
+                    <span class="info-table__slot-number">{lesson.number}</span>
+                    <span class="info-table__slot-time">{lesson.time}</span>
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+          <div class="info-table__row">
+            <dt class="info-table__term">住所</dt>
+            <dd class="info-table__value">
+              {site.address}
+              <a class="info-table__map-link focusable" href={site.mapHref} target="_blank" rel="noopener">
+                Google マップで開く ↗
+              </a>
+            </dd>
+          </div>
+          <div class="info-table__row">
+            <dt class="info-table__term">アクセス</dt>
+            <dd class="info-table__value">{site.station}</dd>
+          </div>
+          <div class="info-table__row">
+            <dt class="info-table__term">メール</dt>
+            <dd class="info-table__value">
+              <a class="info-table__link focusable" href={site.emailHref}>{site.emailDisplay}</a>
+            </dd>
+          </div>
+          <div class="info-table__row">
+            <dt class="info-table__term">電話</dt>
+            <dd class="info-table__value info-table__value--numeric">
+              <a class="info-table__link focusable" href={site.phoneHref}>{site.phoneDisplay}</a>
+            </dd>
+          </div>
+          <div class="info-table__row">
+            <dt class="info-table__term">Instagram</dt>
+            <dd class="info-table__value">
+              <a class="info-table__link focusable" href={site.instagram.href} target="_blank" rel="noopener">
+                {site.instagram.label}
+              </a>
+            </dd>
           </div>
         </dl>
       </div>
 
-      <div class="information__panel information__panel--lessons" data-reveal>
-        <h3 class="information__panel-title">教室時間</h3>
-        <ol class="lesson-list">
-          {site.lessons.map((lesson) => (
-            <li class="lesson-list__item">
-              <span class="lesson-list__number">{lesson.number}</span>
-              <span class="lesson-list__time">{lesson.time}</span>
-            </li>
-          ))}
-        </ol>
+      <div class="information__map" data-reveal>
+        <iframe
+          class="information__map-frame"
+          src={site.mapEmbedHref}
+          title="遊結倶楽部の地図"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+        <p class="information__map-note">{site.address}</p>
       </div>
-    </div>
-
-    <div class="access" data-reveal>
-      <div class="access__heading">
-        <p class="access__eyebrow">ACCESS</p>
-        <h3 class="access__title">遊結倶楽部</h3>
-        <p class="access__reading">ゆうゆうくらぶ</p>
-      </div>
-      <dl class="access__details">
-        <div class="access__row">
-          <dt class="access__term">住所</dt>
-          <dd class="access__description">{site.address}</dd>
-        </div>
-        <div class="access__row">
-          <dt class="access__term">電車</dt>
-          <dd class="access__description">{site.station}</dd>
-        </div>
-        <div class="access__row">
-          <dt class="access__term">メール</dt>
-          <dd class="access__description">
-            <a class="access__phone focusable" href={site.emailHref}>{site.emailDisplay}</a>
-          </dd>
-        </div>
-      </dl>
     </div>
   </div>
 </section>

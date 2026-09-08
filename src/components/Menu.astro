@@ -1,0 +1,180 @@
+---
+import { Image } from 'astro:assets';
+import trialBaskets from '@/assets/images/IMG_2606.jpg';
+import craftCollection from '@/assets/images/craft-collection.jpg';
+import colorfulBags from '@/assets/images/IMG_2610.jpg';
+import bearBaskets from '@/assets/images/IMG_2607.jpg';
+import materialsShelf from '@/assets/images/materials-shelf.jpg';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { site } from '@/data/site';
+---
+
+<section class="menu section" id="menu" aria-labelledby="menu-heading">
+  <div class="menu__inner container">
+    <div id="menu-heading" data-reveal>
+      <SectionHeading
+        english={'MENU & PRICE'}
+        title="教室・講座のご案内"
+        lead="体験から定期教室、出張講座まで。目的に合わせてお選びください。"
+        watermark="MENU"
+      />
+    </div>
+
+    <div class="menu__grid">
+      <article class="plan plan--trial" id="trial" data-reveal>
+        <figure class="plan__figure">
+          <Image
+            class="plan__image"
+            src={trialBaskets}
+            alt="パステルカラーのリボン付きクラフトバンドかご。はじめてのカゴ体験の作品"
+            widths={[480, 720, 1080]}
+            sizes="(max-width: 760px) 100vw, 50vw"
+            format="webp"
+          />
+          <span class="plan__badge">TRIAL</span>
+        </figure>
+        <div class="plan__body">
+          <p class="plan__english">TRIAL LESSON</p>
+          <h3 class="plan__title">{site.trialLesson.title}</h3>
+          <p class="plan__subtitle">{site.trialLesson.name}</p>
+          <div class="plan__price-row">
+            <span class="plan__price-label">Price</span>
+            <span class="plan__price">{site.trialLesson.price}</span>
+            <span class="plan__price-note">{site.trialLesson.priceNote}</span>
+          </div>
+          <p class="plan__text">
+            はじめての方向けに、小さなカゴをひとつ編み上げます。材料はこちらでご用意します。
+          </p>
+          <p class="plan__note">※ {site.trialLesson.note}</p>
+          <a class="plan__link focusable" href="#contact">
+            <span>体験を予約する</span>
+            <span class="plan__link-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="plan plan--lesson" data-reveal>
+        <figure class="plan__figure">
+          <Image
+            class="plan__image"
+            src={craftCollection}
+            alt="クラフトバンドで作られたバッグや小物"
+            widths={[480, 720, 1080]}
+            sizes="(max-width: 760px) 100vw, 50vw"
+            format="webp"
+          />
+          <span class="plan__badge">LESSON</span>
+        </figure>
+        <div class="plan__body">
+          <p class="plan__english">CRAFT BAND LESSON</p>
+          <h3 class="plan__title">クラフトバンド教室と PP バンド</h3>
+          <p class="plan__subtitle">定期教室・生徒募集中</p>
+          <dl class="plan__details">
+            <div class="plan__detail">
+              <dt>開講日</dt>
+              <dd>{site.businessDays}</dd>
+            </div>
+            <div class="plan__detail">
+              <dt>時間帯</dt>
+              <dd>
+                {site.lessons.map((lesson, index) => (
+                  <span class="plan__slot">{lesson.time}{index < site.lessons.length - 1 ? ' / ' : ''}</span>
+                ))}
+              </dd>
+            </div>
+            <div class="plan__detail">
+              <dt>講師資格</dt>
+              <dd>
+                {site.qualifications.map((lines) => (
+                  <span class="plan__credential">{lines.join(' ')}</span>
+                ))}
+              </dd>
+            </div>
+          </dl>
+          <a class="plan__link focusable" href="#information">
+            <span>営業案内を見る</span>
+            <span class="plan__link-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="plan plan--visit" data-reveal>
+        <figure class="plan__figure">
+          <Image
+            class="plan__image"
+            src={colorfulBags}
+            alt="ピンクと黄色のクラフトバンドで編まれたかごバッグ"
+            widths={[480, 720, 1080]}
+            sizes="(max-width: 760px) 100vw, 50vw"
+            format="webp"
+          />
+          <span class="plan__badge">VISIT</span>
+        </figure>
+        <div class="plan__body">
+          <p class="plan__english">VISITING LESSON</p>
+          <h3 class="plan__title">{site.visitingLesson.title}</h3>
+          <p class="plan__subtitle">{site.visitingLesson.lead}</p>
+          <p class="plan__text">{site.visitingLesson.body}</p>
+          <p class="plan__note">※ {site.visitingLesson.note}</p>
+          <a class="plan__link focusable" href="#contact">
+            <span>講座を相談する</span>
+            <span class="plan__link-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="plan plan--design" data-reveal>
+        <figure class="plan__figure">
+          <Image
+            class="plan__image"
+            src={bearBaskets}
+            alt="くまの顔をあしらったキッズ向けクラフトバンドのかご"
+            widths={[480, 720, 1080]}
+            sizes="(max-width: 760px) 100vw, 50vw"
+            format="webp"
+          />
+          <span class="plan__badge">KIDS</span>
+        </figure>
+        <div class="plan__body">
+          <p class="plan__english">KIDS &amp; ORIGINAL DESIGN</p>
+          <h3 class="plan__title">{site.originalDesign.title.join('')}</h3>
+          <p class="plan__subtitle">{site.originalDesign.lead}</p>
+          <ul class="plan__list">
+            {site.originalDesign.items.map((item) => (
+              <li class="plan__list-item">{item}</li>
+            ))}
+          </ul>
+          <a class="plan__link focusable" href="#contact">
+            <span>デザインを相談する</span>
+            <span class="plan__link-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <aside class="shop" data-reveal>
+      <figure class="shop__figure">
+        <Image
+          class="shop__image"
+          src={materialsShelf}
+          alt="色とりどりのクラフトバンドが並ぶ店内の棚"
+          widths={[480, 720, 1080]}
+          sizes="(max-width: 760px) 100vw, 40vw"
+          format="webp"
+        />
+      </figure>
+      <div class="shop__body">
+        <p class="shop__english">SHOP</p>
+        <h3 class="shop__title">材料・手芸用品・雑貨の販売</h3>
+        <p class="shop__text">
+          教室で使う材料はもちろん、ご自宅で楽しむための材料もそろいます。猫雑貨などの小物も販売しています。
+        </p>
+        <ul class="shop__list">
+          {site.services.slice(1).map((service) => (
+            <li class="shop__item">{service}</li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+import SectionHeading from '@/components/SectionHeading.astro';
+import { features, site } from '@/data/site';
+---
+
+<section class="features section" id="features" aria-labelledby="features-heading">
+  <div class="features__inner container">
+    <div id="features-heading" data-reveal>
+      <SectionHeading
+        english="FEATURES"
+        title="遊結倶楽部の3つの特長"
+        lead="教室と販売のお店として、鹿嶋の地で手づくりの時間をお手伝いしています。"
+        watermark="FEATURES"
+      />
+    </div>
+
+    <ol class="features__list">
+      {features.map((feature) => (
+        <li class="feature" data-reveal>
+          <p class="feature__number">{feature.number}</p>
+          <p class="feature__english">{feature.english}</p>
+          <h3 class="feature__title">{feature.title}</h3>
+          <p class="feature__body">{feature.body}</p>
+          {feature.number === '01' && (
+            <ul class="feature__credentials">
+              {site.qualifications.map((lines) => (
+                <li class="feature__credential">{lines.join(' ')}</li>
+              ))}
+            </ul>
+          )}
+          {feature.number === '03' && (
+            <ul class="feature__slots">
+              {site.lessons.map((lesson) => (
+                <li class="feature__slot">
+                  <span class="feature__slot-number">{lesson.number}</span>
+                  <span class="feature__slot-time">{lesson.time}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

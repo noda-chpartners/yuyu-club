@@ -1,0 +1,30 @@
+---
+import SectionHeading from '@/components/SectionHeading.astro';
+import { flow } from '@/data/site';
+---
+
+<section class="flow section" id="flow" aria-labelledby="flow-heading">
+  <div class="flow__inner container">
+    <div id="flow-heading" data-reveal>
+      <SectionHeading
+        english="FLOW"
+        title="体験までの流れ"
+        lead="はじめての方は、まずは体験教室からどうぞ。ご予約から当日までの流れです。"
+        watermark="FLOW"
+      />
+    </div>
+
+    <ol class="flow__list">
+      {flow.map((step) => (
+        <li class="step" data-reveal>
+          <p class="step__number">
+            <span class="step__number-label">STEP</span>
+            <span class="step__number-value">{step.number}</span>
+          </p>
+          <h3 class="step__title">{step.title}</h3>
+          <p class="step__body">{step.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

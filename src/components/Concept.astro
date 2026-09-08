@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import ribbonBaskets from '@/assets/images/ribbon-baskets.jpg';
+import zodiacSeries from '@/assets/images/IMG_2608.jpg';
+import geometricBag from '@/assets/images/geometric-bag.jpg';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { site } from '@/data/site';
+---
+
+<section class="concept section" id="concept" aria-labelledby="concept-heading">
+  <div class="concept__inner container">
+    <div id="concept-heading" data-reveal>
+      <SectionHeading english="CONCEPT" title="遊んで、結ぶ。" watermark="YUYU CLUB" />
+    </div>
+
+    <div class="concept__body container--narrow" data-reveal>
+      <p class="concept__statement">
+        <span class="concept__statement-line">手を動かすうちに、色が重なり、</span>
+        <span class="concept__statement-line">かたちが生まれ、人がつながる。</span>
+      </p>
+      <p class="concept__paragraph">
+        {site.name}（{site.reading}）は、茨城県鹿嶋市にあるクラフトバンド教室と PP バンド、販売のお店です。
+      </p>
+      <p class="concept__paragraph">
+        クラフトバンド・紙バンドをはじめ、手芸用品、雑貨、猫雑貨を取り扱っています。はじめての方も、長く続けている方も、それぞれのペースで「つくる時間」を楽しんでいただけます。
+      </p>
+    </div>
+
+    <div class="concept__photos">
+      <figure class="concept__photo concept__photo--a" data-reveal>
+        <Image
+          class="concept__image"
+          src={ribbonBaskets}
+          alt="ピンク、紫、緑の紙バンドで編まれたリボン付きバスケット"
+          widths={[420, 640, 900]}
+          sizes="(max-width: 760px) 60vw, 30vw"
+          format="webp"
+        />
+      </figure>
+      <figure class="concept__photo concept__photo--b" data-reveal>
+        <Image
+          class="concept__image"
+          src={zodiacSeries}
+          alt="オリジナルデザイン 干支シリーズのクラフトバンド作品"
+          widths={[520, 780, 1100]}
+          sizes="(max-width: 760px) 100vw, 40vw"
+          format="webp"
+        />
+        <figcaption class="concept__caption">オリジナルデザイン 干支シリーズ</figcaption>
+      </figure>
+      <figure class="concept__photo concept__photo--c" data-reveal>
+        <Image
+          class="concept__image"
+          src={geometricBag}
+          alt="幾何学模様に編まれたクラフトバンドのバッグ"
+          widths={[420, 640, 900]}
+          sizes="(max-width: 760px) 60vw, 26vw"
+          format="webp"
+        />
+      </figure>
+    </div>
+  </div>
+</section>

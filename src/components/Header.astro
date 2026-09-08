@@ -4,66 +4,106 @@ import { navigation, site } from '@/data/site';
 ---
 
 <header class="header" data-header>
-  <div class="header__inner">
+  <div class="header__bar">
+    <button
+      class="menu-toggle focusable"
+      type="button"
+      aria-label="メニューを開く"
+      aria-controls="site-menu"
+      aria-expanded="false"
+      data-menu-button
+    >
+      <span class="menu-toggle__lines" aria-hidden="true">
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </span>
+      <span class="menu-toggle__label" aria-hidden="true">MENU</span>
+    </button>
+
     <a class="header__brand focusable" href="#top" aria-label="遊結倶楽部 トップへ">
       <BrandMark />
     </a>
 
-    <nav class="header__nav" aria-label="メインナビゲーション">
-      <ul class="header__nav-list">
-        {navigation.map((item) => (
-          <li class="header__nav-item">
-            <a class="header__nav-link focusable" href={item.href}>{item.label}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-
-    <a class="header__phone focusable" href={site.emailHref}>
-      <span class="header__phone-label">メール</span>
-      <span class="header__phone-number">{site.emailDisplay}</span>
-    </a>
-
-    <button
-      class="menu-button focusable"
-      type="button"
-      aria-label="メニューを開く"
-      aria-controls="mobile-menu"
-      aria-expanded="false"
-      data-menu-button
-    >
-      <span class="menu-button__line"></span>
-      <span class="menu-button__line"></span>
-      <span class="menu-button__line"></span>
-    </button>
+    <div class="header__actions">
+      <a class="header__action focusable" href={site.emailHref}>
+        <svg class="header__action-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="5.5" width="18" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <path d="M3.5 6.5 12 13l8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <span class="header__action-label">メール</span>
+      </a>
+      <a class="header__action focusable" href={site.phoneHref}>
+        <svg class="header__action-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M7.2 3.8 9.6 7.3c.3.5.2 1.1-.2 1.5L8 10.2c.9 2.4 3.4 4.9 5.8 5.8l1.4-1.4c.4-.4 1-.5 1.5-.2l3.5 2.4c.6.4.7 1.2.3 1.8l-1.3 1.6c-.6.8-1.7 1.1-2.7.8C10.5 19.4 4.6 13.5 3 7.5c-.3-1 0-2.1.8-2.7l1.6-1.3c.6-.4 1.4-.3 1.8.3Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.4"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="header__action-label">お電話</span>
+      </a>
+    </div>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
-    <div class="mobile-menu__pattern" aria-hidden="true"></div>
-    <div class="mobile-menu__inner">
-      <div class="mobile-menu__brand">
-        <BrandMark inverse />
+  <div
+    class="site-menu"
+    id="site-menu"
+    aria-hidden="true"
+    data-site-menu
+    data-lenis-prevent
+    data-lenis-prevent-wheel
+    data-lenis-prevent-touch
+  >
+    <div class="site-menu__inner">
+      <div class="site-menu__column site-menu__column--nav">
+        <p class="site-menu__eyebrow">MENU</p>
+        <nav aria-label="サイトナビゲーション">
+          <ul class="site-menu__list">
+            {navigation.map((item, index) => (
+              <li class="site-menu__item">
+                <a class="site-menu__link focusable" href={item.href} data-menu-link>
+                  <span class="site-menu__number">0{index + 1}</span>
+                  <span class="site-menu__label">{item.label}</span>
+                  <span class="site-menu__english">{item.english}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-      <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
-        <ul class="mobile-menu__list">
-          {navigation.map((item, index) => (
-            <li class="mobile-menu__item">
-              <a class="mobile-menu__link focusable" href={item.href} data-menu-link>
-                <span class="mobile-menu__number">0{index + 1}</span>
-                <span class="mobile-menu__label">{item.label}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div class="mobile-menu__contact">
-        <a class="mobile-menu__phone focusable" href={site.emailHref}>
-          <span class="mobile-menu__phone-label">メールでのお問い合わせ</span>
-          <span class="mobile-menu__phone-number">{site.emailDisplay}</span>
-        </a>
-        <a class="mobile-menu__instagram focusable" href={site.instagram.href}>
-          Instagram&nbsp;&nbsp;{site.instagram.label}
-        </a>
+
+      <div class="site-menu__column site-menu__column--info">
+        <div class="site-menu__brand">
+          <BrandMark size="large" />
+          <p class="site-menu__tagline">{site.tagline}</p>
+        </div>
+        <dl class="site-menu__hours">
+          <div class="site-menu__hours-row">
+            <dt>営業日</dt>
+            <dd>{site.businessDays}</dd>
+          </div>
+          <div class="site-menu__hours-row">
+            <dt>営業時間</dt>
+            <dd>{site.businessHours}</dd>
+          </div>
+        </dl>
+        <div class="site-menu__contact">
+          <a class="site-menu__contact-link focusable" href={site.emailHref} data-menu-link>
+            <span class="site-menu__contact-label">メール</span>
+            <span class="site-menu__contact-value">{site.emailDisplay}</span>
+          </a>
+          <a class="site-menu__contact-link focusable" href={site.phoneHref} data-menu-link>
+            <span class="site-menu__contact-label">お電話</span>
+            <span class="site-menu__contact-value">{site.phoneDisplay}</span>
+          </a>
+          <a class="site-menu__contact-link focusable" href={site.instagram.href} target="_blank" rel="noopener">
+            <span class="site-menu__contact-label">Instagram</span>
+            <span class="site-menu__contact-value">{site.instagram.label}</span>
+          </a>
+        </div>
+        <address class="site-menu__address">{site.address}</address>
       </div>
     </div>
   </div>
@@ -71,7 +111,7 @@ import { navigation, site } from '@/data/site';
 
 <script>
   const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-button]');
-  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+  const menu = document.querySelector<HTMLElement>('[data-site-menu]');
   const menuLinks = document.querySelectorAll<HTMLElement>('[data-menu-link]');
 
   const setMenu = (open: boolean) => {
@@ -90,9 +130,5 @@ import { navigation, site } from '@/data/site';
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setMenu(false);
-  });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 980) setMenu(false);
   });
 </script>

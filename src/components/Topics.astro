@@ -1,0 +1,23 @@
+---
+import { topics } from '@/data/site';
+---
+
+<section class="topics" id="topics" aria-labelledby="topics-heading">
+  <div class="topics__inner container" data-reveal>
+    <div class="topics__head">
+      <p class="topics__english">TOPICS</p>
+      <h2 class="topics__title" id="topics-heading">お知らせ</h2>
+    </div>
+    <ul class="topics__list">
+      {topics.map((topic) => (
+        <li class="topics__item">
+          <a class="topics__link focusable" href={topic.href}>
+            <span class="topics__tag">{topic.tag}</span>
+            <span class="topics__text">{topic.text}</span>
+            <span class="topics__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
